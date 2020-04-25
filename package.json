@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib dist",
-    "build": "babel src --out-dir lib",
+    "build": "webpack",
     "lint": "eslint src test examples",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
     "test:watch": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive --watch",
@@ -51,9 +51,11 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "rimraf": "^2.3.4",
+    "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
-    "webpack": "^1.9.6",
-    "webpack-dev-server": "^1.8.2"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
