@@ -1,69 +1,35 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
-var entry = [];
-if(process.env.NODE_ENV === 'development') {
-    entry.push(
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server'
-    );
-}
+const babel = require('./config/babel');
 
-var plugins = [];
-if(process.env.NODE_ENV === 'production') {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-	        compress: {
-	            warnings: false
-	        }
-	    })
-    );
-} else {
-    plugins.push(
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    );
-}
+module.exports = env => {
+  const babelLoader = {
+    loader: 'babel-loader',
+    options: babel.babelConfig(env),
+  };
 
-var loaders = [];
-if(process.env.NODE_ENV === 'development') {
-    loaders.push({
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/,
-        include: __dirname
-    });
-} else {
-    loaders.push({
-        test: /\.js$/,
-        loaders: ['babel'],
-        exclude: /node_modules/,
-        include: __dirname
-    });
-}
-
-loaders.push({
-    test: /\.js$/,
-    loaders: ['babel'],
-    include: path.join(__dirname, '..', '..', 'src')
-});
-
-module.exports = {
-    devtool: process.env.NODE_ENV === 'development' ? 'eval': undefined,
-    entry: entry.concat('./index'),
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/static/'
-    },
-    plugins: plugins,
-    resolve: {
-        alias: {
-            'react-textfit': path.join(__dirname, '..', '..', 'src')
-        },
-        extensions: ['', '.js']
-    },
+  return {
+    devtool: process.env.NODE_ENV === 'development' ? 'eval' : undefined,
+    entry: './index.js',
     module: {
-        loaders: loaders
-    }
+      rules: [
+        {
+          exclude: /node_modules/u,
+          test: /\.js(?<jsx>x?)$/u,
+          use: babelLoader,
+        },
+      ],
+    },
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: 'bundle.js',
+      publicPath: '/dist/',
+    },
+    resolve: {
+      alias: {
+        // 'react-textfit': path.join(__dirname, '../../src'),
+      },
+      extensions: ['.js', '.jsx'],
+    },
+  };
 };
