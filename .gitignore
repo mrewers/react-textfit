@@ -1,6 +1,16 @@
-node_modules
+# Builds
+dist/
+
+# Dependencies
+lib/
+node_modules/
+package-lock.json
+yarn.lock
+
+# Log files
 *.log
+
 .DS_Store
-dist
-lib
+
+# Test coverage
 coverage
