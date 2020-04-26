@@ -1,6 +1,7 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 react-textfit
+Original work Copyright (c) 2015 react-textfit
+Modifications since 04/25/2020 Copyright (c) 2020 Marek Rewers
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

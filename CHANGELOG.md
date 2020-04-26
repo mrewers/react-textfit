@@ -1,28 +1,19 @@
-# Change log
+# Change Log
 
 All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
 
-## v1.1.0
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-* React 16 support.
+## [Unreleased](https://github.com/mrewers/react-textfit/compare/prefork...HEAD)
 
-## v1.0.1
+_This sections lists changes commited to master since most recent release_
 
-Improvements:
+### Changed:
 
-* Accept multiple children (#23).
+- Convert to TypeScript
+- Use functional components and hooks rather than class components
 
-## v1.0.0
+## [Prefork](https://github.com/mrewers/react-textfit/releases/tag/prefork)
 
-Backwards-incompatible changes:
-
-* `<span>` changed to a `<div>` in the implementation.
-* Dropped `perfectFit` property.
-
-Improvements:
-
-* React 15 support (#21).
-* More precise font-size computation (#22). 
-* Fixed min and max (#1).
-* Removed warnings about invalid setState calls during resizing (#15).
+- The original [react-textfit](https://github.com/malte-wessel/react-textfit) library written by Malte Wessel.
